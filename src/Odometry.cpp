@@ -1,10 +1,6 @@
 #include "head.h"
 #include <cmath> // For sin()
 
-Odometry::Odometry() {
-    // Initialization is done in member initializer list (if needed)
-}
-
 float Odometry::headingCalc(float rotL, float rotR, float rotB) {
     // Convert rotation from degrees to radians
     float arclengthL = pi / 180 * rotL; 

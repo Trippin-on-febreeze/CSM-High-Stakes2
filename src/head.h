@@ -4,7 +4,6 @@
 
 class Odometry {
 public:
-    Odometry();
     float headingCalc(float rotL, float rotR, float rotB);
     float xDisplacementCalc(float rotL, float rotR, float rotB);
     float yDisplacementCalc(float rotL, float rotR, float rotB);
