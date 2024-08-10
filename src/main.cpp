@@ -494,6 +494,8 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
+#include "Odometry.cpp"
+#include "head.h"
 using namespace vex;
 
 // A global instance of competition
@@ -533,6 +535,41 @@ void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
+  
+  // declaring instance of Odometry class
+  Odometry Odometry;
+
+  float x = 0;
+  float y = 0;
+  float heading = 0;
+
+  // timer is the time at the end of the previous loop
+  auto timer = std::chrono::steady_clock::now();
+  std::chrono::milliseconds interval(10); // 10 milliseconds
+
+    while (true) {
+      auto now = std::chrono::steady_clock::now();
+      auto timerDiff = now - timer;
+
+      if (timerDiff >= interval) {
+      // code in this loop runs every 10 ms
+        float rotL = odometryL.position(degrees);
+        float rotR = odometryR.position(degrees);
+        float rotB = odometryB.position(degrees);
+
+        odometryL.resetPosition();
+        odometryR.resetPosition();
+        odometryB.resetPosition();
+
+        // updating x, y, and heading
+        heading = heading + Odometry.headingCalc(rotL, rotR, rotB); 
+        x = x + Odometry.xDisplacementCalc(rotL, rotR, rotB);
+        y = y + Odometry.yDisplacementCalc(rotL, rotR, rotB);
+        
+        // set timer to the time at the end of the loop
+        timer = std::chrono::steady_clock::now();
+      }
+}
 }
 
 /*---------------------------------------------------------------------------*/
@@ -557,7 +594,7 @@ void usercontrol(void) {
 
   clawPiston.set(false);
   while (1) {
-    //Drivetrain control
+    // Drivetrain control
     speed = Controller1.Axis3.position();
     turn = 0.8*Controller1.Axis1.position();
 
@@ -572,111 +609,49 @@ void usercontrol(void) {
     RightCenterDrive.spin(forward, rightDrive, pct);
     RightRearDrive.spin(forward, rightDrive, pct);
 
-    //Intake motor control
+    // Intake motor control
     if(Controller1.ButtonR1.pressing()) {
       Intake.spin(forward, 100, pct);
     } else if (Controller1.ButtonR2.pressing()){
       Intake.spin(reverse, 100, pct);
-    } else Intake.stop(); //not sure if .stop() is the method I want, also occurs on l380
+    } else Intake.stop(); 
 
-    //Reverse drive direction
+    // Reverse drive direction
     if(Controller1.ButtonUp.pressing()) {
       driveDirection = 1;
     } else if (Controller1.ButtonDown.pressing()){
       driveDirection = -1;
     }
 
-    //Claw arm motor control
+    // Claw arm motor control
     if(Controller1.ButtonL1.pressing()) {
       ClawMotor.spin(forward, 50, pct);
     } else if(Controller1.ButtonL2.pressing()) {
       ClawMotor.spin(reverse, 50, pct);
     } else ClawMotor.stop(hold); 
 
-    //Toggle for claw piston
-    if(clawToggle1 && Controller1.ButtonA.pressing()) {
-      clawPiston.set(true);
+    // Toggle for claw piston
+    if(Controller1.ButtonA.pressing()) {
+      clawPiston.set(clawToggle1);
       clawToggle1 = !clawToggle1;
-      wait(1, sec);
-    } else if(!clawToggle1 && Controller1.ButtonA.pressing()) {
-      clawPiston.set(false);
-      clawToggle1 = !clawToggle1;
-      wait(1, sec);
+      wait(2, sec);
     }
 
-    //Toggle for tilting claw piston
-    if(clawToggle2 && Controller1.ButtonX.pressing()) {
-      clawTiltPiston.set(true);
+    // Toggle for tilting claw piston
+    if(Controller1.ButtonX.pressing()) {
+      clawTiltPiston.set(clawToggle2);
       clawToggle2 = !clawToggle2;
-      wait(1, sec);
-    } else if(!clawToggle2 && Controller1.ButtonX.pressing()) {
-      clawTiltPiston.set(false);
-      clawToggle2 = !clawToggle2;
-      wait(1, sec);
+      wait(2, sec);
     }
 
-    //Toggle for mogo piston
-    if(mogoToggle && Controller1.ButtonY.pressing()) {
-      mogoPiston.set(true);
+    // Toggle for mogo piston
+    if(Controller1.ButtonY.pressing()) {
+      mogoPiston.set(mogoToggle);
       mogoToggle = !mogoToggle;
-      wait(1, sec);
-    } else if(!mogoToggle && Controller1.ButtonY.pressing()) {
-      mogoPiston.set(false);
-      mogoToggle = !mogoToggle;
-      wait(1, sec);
+      wait(2, sec);
     }
 
-      // LeftFrontDrive.spin(forward, direction, pct);
-      // // LeftCenterDrive.spin(forward, 100, pct);
-      // LeftRearDrive.spin(forward, direction, pct);
-
-      // RightFrontDrive.spin(reverse, direction, pct);
-      // // RightCenterDrive.spin(forward, 100, pct);
-      // RightRearDrive.spin(reverse, direction, pct);
-
-
-
-    // if (Controller1.ButtonUp.pressing()){
-    //   LeftFrontDrive.spin(forward, speed, pct);
-    //   // LeftCenterDrive.spin(forward, 100, pct);
-    //   LeftRearDrive.spin(forward, speed, pct);
-
-
-    //   RightFrontDrive.spin(forward, speed, pct);
-    //   // RightCenterDrive.spin(forward, 100, pct);
-    //   RightRearDrive.spin(forward, speed, pct);
-    // } else if (Controller1.ButtonDown.pressing()){
-
-
-    //   LeftFrontDrive.spin(reverse, speed, pct);
-
-    //   // LeftCenterDrive.spin(reverse, 100, pct);
-    //   LeftRearDrive.spin(reverse, speed, pct);
-
-
-    //   RightFrontDrive.spin(reverse, speed, pct);
-    //   // RightCenterDrive.spin(reverse, 100, pct);
-    //   RightRearDrive.spin(reverse, speed, pct);
-
-    // } else if (Controller1.ButtonLeft.pressing()){
-    //   // LeftDrive.spin(forward, 100, pct);
-    //   // RightDrive.spin(reverse, 100, pct);
-    // } else if (Controller1.ButtonRight.pressing()){
-    //   // LeftDrive.spin(reverse, 100, pct);
-    //   // RightDrive.spin(forward, 100, pct);
-    // } else {
-    //   LeftFrontDrive.spin(forward, 0, pct);
-    //   // LeftCenterDrive.stop(brake);
-    //   LeftRearDrive.spin(forward, 0, pct);
-
-    //   RightFrontDrive.spin(reverse, 0, pct);
-    //   // RightCenterDrive.stop(brake);
-    //   RightRearDrive.spin(reverse, 0, pct);
-    // }
-
-
-  //   //wait(0, msec); // Sleep the task for a short amount of time to
-  //                   // prevent wasted resources.
+    wait(20, msec); 
   }
 }
 
