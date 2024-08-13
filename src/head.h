@@ -15,3 +15,18 @@ public:
 };
 
 #endif // ODOMETRY_H
+
+#ifndef DRIVE_H
+#define DRIVE_H
+class Drive {
+public:
+    Drive();
+    void moveL();
+    void moveR();
+    void driveDistance(int distance);
+    void turn(int direction);
+    void turnTo(float heading);
+    void driveTo(int x, int y);
+};
+
+#endif // DRIVE_H

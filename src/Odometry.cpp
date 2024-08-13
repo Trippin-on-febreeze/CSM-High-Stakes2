@@ -1,5 +1,5 @@
 #include "head.h"
-#include <cmath> // For sin()
+#include <cmath>
 
 float Odometry::headingCalc(float rotL, float rotR, float rotB) {
     // Convert rotation from degrees to radians
