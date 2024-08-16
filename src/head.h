@@ -20,13 +20,12 @@ public:
 #define DRIVE_H
 class Drive {
 public:
-    Drive();
-    void moveL();
-    void moveR();
+    void moveL(int direction);
+    void moveR(int direction);
     void driveDistance(int distance);
     void turn(int direction);
-    void turnTo(float heading);
-    void driveTo(int x, int y);
+    void turnTo(float heading, float finalHeading);
+    void driveTo(int X, int Y, int x, int y, float heading);
 };
 
 #endif // DRIVE_H

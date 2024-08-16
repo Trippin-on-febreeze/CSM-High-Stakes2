@@ -494,12 +494,23 @@
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 #include "vex.h"
-#include "Odometry.cpp"
 #include "head.h"
+
 using namespace vex;
 
 // A global instance of competition
 competition Competition;
+
+
+
+
+
+
+
+
+
+
+
 
 // define your global instances of motors and other devices here
 
@@ -512,6 +523,8 @@ competition Competition;
 /*  function is only called once after the V5 has been powered on and        */
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
+
+const float pi = 3.1415926;
 
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
@@ -531,6 +544,10 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+  float x = 0;
+  float y = 0;
+  float heading = 0;
+
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
@@ -538,16 +555,12 @@ void autonomous(void) {
   
   // declaring instance of Odometry class
   Odometry Odometry;
-
-  float x = 0;
-  float y = 0;
-  float heading = 0;
-
+   Drive Drive;
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(10); // 10 milliseconds
 
-    while (true) {
+    for (int i =0; i<300; i++) {
       auto now = std::chrono::steady_clock::now();
       auto timerDiff = now - timer;
 
@@ -561,13 +574,19 @@ void autonomous(void) {
         odometryR.resetPosition();
         odometryB.resetPosition();
 
+
+        //DRIVING LOGIC
+        Drive.driveTo(50, 50, x, y, pi/2);
+
         // updating x, y, and heading
-        heading = heading + Odometry.headingCalc(rotL, rotR, rotB); 
-        x = x + Odometry.xDisplacementCalc(rotL, rotR, rotB);
-        y = y + Odometry.yDisplacementCalc(rotL, rotR, rotB);
-        
+        heading += Odometry.headingCalc(rotL, rotR, rotB); 
+        x += Odometry.xDisplacementCalc(rotL, rotR, rotB);
+        y += Odometry.yDisplacementCalc(rotL, rotR, rotB);
+
         // set timer to the time at the end of the loop
         timer = std::chrono::steady_clock::now();
+
+
       }
 }
 }
@@ -585,74 +604,76 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
 
-  int speed = 0, turn = 0, driveDirection = 1, leftDrive = 0, rightDrive = 0;
-  bool clawToggle1 = true, clawToggle2 = true, mogoToggle = true;
+  autonomous();
 
-  clawPiston.set(true);
+  // int speed = 0, turn = 0, driveDirection = 1, leftDrive = 0, rightDrive = 0;
+  // bool clawToggle1 = true, clawToggle2 = true, mogoToggle = true;
 
-  wait(5, seconds);
+  // clawPiston.set(true);
 
-  clawPiston.set(false);
-  while (1) {
-    // Drivetrain control
-    speed = Controller1.Axis3.position();
-    turn = 0.8*Controller1.Axis1.position();
+  // wait(5, seconds);
 
-    leftDrive = driveDirection*speed + turn;
-    rightDrive = driveDirection*speed - turn;
+  // clawPiston.set(false);
+  // while (1) {
+  //   // Drivetrain control
+  //   speed = Controller1.Axis3.position();
+  //   turn = 0.8*Controller1.Axis1.position();
 
-    LeftFrontDrive.spin(forward, leftDrive, pct);
-    LeftCenterDrive.spin(forward, leftDrive, pct);
-    LeftRearDrive.spin(forward, leftDrive, pct);
+  //   leftDrive = driveDirection*speed + turn;
+  //   rightDrive = driveDirection*speed - turn;
 
-    RightFrontDrive.spin(forward, rightDrive, pct);
-    RightCenterDrive.spin(forward, rightDrive, pct);
-    RightRearDrive.spin(forward, rightDrive, pct);
+  //   LeftFrontDrive.spin(forward, leftDrive, pct);
+  //   LeftCenterDrive.spin(forward, leftDrive, pct);
+  //   LeftRearDrive.spin(forward, leftDrive, pct);
 
-    // Intake motor control
-    if(Controller1.ButtonR1.pressing()) {
-      Intake.spin(forward, 100, pct);
-    } else if (Controller1.ButtonR2.pressing()){
-      Intake.spin(reverse, 100, pct);
-    } else Intake.stop(); 
+  //   RightFrontDrive.spin(forward, rightDrive, pct);
+  //   RightCenterDrive.spin(forward, rightDrive, pct);
+  //   RightRearDrive.spin(forward, rightDrive, pct);
 
-    // Reverse drive direction
-    if(Controller1.ButtonUp.pressing()) {
-      driveDirection = 1;
-    } else if (Controller1.ButtonDown.pressing()){
-      driveDirection = -1;
-    }
+  //   // Intake motor control
+  //   if(Controller1.ButtonR1.pressing()) {
+  //     Intake.spin(forward, 100, pct);
+  //   } else if (Controller1.ButtonR2.pressing()){
+  //     Intake.spin(reverse, 100, pct);
+  //   } else Intake.stop(); 
 
-    // Claw arm motor control
-    if(Controller1.ButtonL1.pressing()) {
-      ClawMotor.spin(forward, 50, pct);
-    } else if(Controller1.ButtonL2.pressing()) {
-      ClawMotor.spin(reverse, 50, pct);
-    } else ClawMotor.stop(hold); 
+  //   // Reverse drive direction
+  //   if(Controller1.ButtonUp.pressing()) {
+  //     driveDirection = 1;
+  //   } else if (Controller1.ButtonDown.pressing()){
+  //     driveDirection = -1;
+  //   }
 
-    // Toggle for claw piston
-    if(Controller1.ButtonA.pressing()) {
-      clawPiston.set(clawToggle1);
-      clawToggle1 = !clawToggle1;
-      wait(2, sec);
-    }
+  //   // Claw arm motor control
+  //   if(Controller1.ButtonL1.pressing()) {
+  //     ClawMotor.spin(forward, 50, pct);
+  //   } else if(Controller1.ButtonL2.pressing()) {
+  //     ClawMotor.spin(reverse, 50, pct);
+  //   } else ClawMotor.stop(hold); 
 
-    // Toggle for tilting claw piston
-    if(Controller1.ButtonX.pressing()) {
-      clawTiltPiston.set(clawToggle2);
-      clawToggle2 = !clawToggle2;
-      wait(2, sec);
-    }
+  //   // Toggle for claw piston
+  //   if(Controller1.ButtonA.pressing()) {
+  //     clawPiston.set(clawToggle1);
+  //     clawToggle1 = !clawToggle1;
+  //     wait(2, sec);
+  //   }
 
-    // Toggle for mogo piston
-    if(Controller1.ButtonY.pressing()) {
-      mogoPiston.set(mogoToggle);
-      mogoToggle = !mogoToggle;
-      wait(2, sec);
-    }
+  //   // Toggle for tilting claw piston
+  //   if(Controller1.ButtonX.pressing()) {
+  //     clawTiltPiston.set(clawToggle2);
+  //     clawToggle2 = !clawToggle2;
+  //     wait(2, sec);
+  //   }
 
-    wait(20, msec); 
-  }
+  //   // Toggle for mogo piston
+  //   if(Controller1.ButtonY.pressing()) {
+  //     mogoPiston.set(mogoToggle);
+  //     mogoToggle = !mogoToggle;
+  //     wait(2, sec);
+  //   }
+
+  //   wait(20, msec); 
+  // }
 }
 
 //

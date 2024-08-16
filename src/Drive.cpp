@@ -1,10 +1,11 @@
+#include "head.h"
 #include "vex.h"
 #include <cmath>
 const float pi = 3.14159265359;
 
 // moves the left side of the drivetrain
-void moveL(int direction) {
-    if (direction = 1) {
+void Drive::moveL(int direction) {
+    if (direction == 1) {
         LeftFrontDrive.spin(forward, 100, pct);
         LeftCenterDrive.spin(forward, 100, pct);
         LeftRearDrive.spin(forward, 100, pct);
@@ -16,8 +17,8 @@ void moveL(int direction) {
 }
 
 // moves the right side of the drivetrain
-void moveR(int direction) {
-    if (direction = 1) {
+void Drive::moveR(int direction) {
+    if (direction == 1) {
         RightFrontDrive.spin(forward, 100, pct);
         RightCenterDrive.spin(forward, 100, pct);
         RightRearDrive.spin(forward, 100, pct);
@@ -29,8 +30,8 @@ void moveR(int direction) {
 }
 
 // drives the robot for a specified distance
-void driveDistance(int distance) {
-    int turnDegrees = distance/1.625*180 / pi;
+void Drive::driveDistance(int distance) {
+    int turnDegrees = distance/1.625*2*180 / pi;
     LeftFrontDrive.spinTo(turnDegrees, degrees, false);
     LeftCenterDrive.spinTo(turnDegrees, degrees, false);
     LeftRearDrive.spinTo(turnDegrees, degrees, false);
@@ -41,7 +42,7 @@ void driveDistance(int distance) {
 }
 
 // turns the robot, direction = 1 is right, direction != 1 is left
-void DriveTurn(int direction) {
+void Drive::turn(int direction) {
   if (direction == 1) {
         moveL(1);
         moveR(-1);
@@ -52,18 +53,18 @@ void DriveTurn(int direction) {
 }
 
 // turns the robot from its current heading to a chosen heading
-void turnTo(float heading, int direction) {
-    while (heading != direction) {
-        if(heading - (direction + 2*pi) < heading - direction) {
-            DriveTurn(1); //dk if this is correct, may have to switch 1 for -1
+void Drive::turnTo(float heading, float finalHeading) {
+    while (heading != finalHeading) {
+        if(heading - (finalHeading + 2*pi) < heading - finalHeading) {
+            turn(1); //dk if this is correct, may have to switch 1 for -1
         } else {
-            DriveTurn(-1);
+            turn(-1);
         }
     }
 }
 
 // drives the robot in a straight line to point (X,Y)
-void driveTo(int X, int Y, int x, int y, int direction) {
+void Drive::driveTo(int X, int Y, int x, int y, float heading) {
     // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(20); // 20 milliseconds
@@ -74,11 +75,11 @@ void driveTo(int X, int Y, int x, int y, int direction) {
 
       if (timerDiff >= interval) {
       // code in this loop runs every 10 ms
-        float driveHeading = atan((Y - y) / (X - x));
+        float finalHeading = atan((Y - y) / (X - x));
         float distance = sqrt(pow(X - x, 2) + pow(Y - y, 2));
         //float distance = sqrt(pow((X - x), 2)) + pow((Y - y), 2)));
 
-        turnTo(driveHeading, direction);
+        Drive::turnTo(heading, finalHeading);
         driveDistance(distance);
         
         // set timer to the time at the end of the loop
