@@ -548,6 +548,11 @@ void pre_auton(void) {
   float y = 0;
   float heading = 0;
 
+
+
+
+
+
 void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
@@ -556,6 +561,12 @@ void autonomous(void) {
   // declaring instance of Odometry class
   Odometry Odometry;
    Drive Drive;
+Position position;
+
+  position.X = 0;
+  position.Y = 0;
+
+
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(10); // 10 milliseconds
@@ -576,7 +587,7 @@ void autonomous(void) {
 
 
         //DRIVING LOGIC
-        Drive.driveTo(50, 50, x, y, pi/2);
+        Drive.driveTo(&position, x, y, pi/2);
 
         // updating x, y, and heading
         heading += Odometry.headingCalc(rotL, rotR, rotB); 

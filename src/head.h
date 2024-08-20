@@ -2,6 +2,11 @@
 #ifndef ODOMETRY_H
 #define ODOMETRY_H
 
+struct Position {
+    int Y;
+    int X;
+};
+
 class Odometry {
 public:
     float headingCalc(float rotL, float rotR, float rotB);
@@ -25,7 +30,7 @@ public:
     void driveDistance(int distance);
     void turn(int direction);
     void turnTo(float heading, float finalHeading);
-    void driveTo(int X, int Y, int x, int y, float heading);
+    void driveTo(Position *position, int x, int y, float heading);
 };
 
 #endif // DRIVE_H

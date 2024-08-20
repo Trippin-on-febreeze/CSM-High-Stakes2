@@ -3,6 +3,8 @@
 #include <cmath>
 const float pi = 3.14159265359;
 
+
+
 // moves the left side of the drivetrain
 void Drive::moveL(int direction) {
     if (direction == 1) {
@@ -64,7 +66,7 @@ void Drive::turnTo(float heading, float finalHeading) {
 }
 
 // drives the robot in a straight line to point (X,Y)
-void Drive::driveTo(int X, int Y, int x, int y, float heading) {
+void Drive::driveTo(Position *position, int x, int y, float heading) {
     // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(20); // 20 milliseconds
@@ -75,8 +77,8 @@ void Drive::driveTo(int X, int Y, int x, int y, float heading) {
 
       if (timerDiff >= interval) {
       // code in this loop runs every 10 ms
-        float finalHeading = atan((Y - y) / (X - x));
-        float distance = sqrt(pow(X - x, 2) + pow(Y - y, 2));
+        float finalHeading = atan(((*position).Y - y) / ((*position).X - x));
+        float distance = sqrt(pow((*position).Y - x, 2) + pow((*position).X - y, 2));
         //float distance = sqrt(pow((X - x), 2)) + pow((Y - y), 2)));
 
         Drive::turnTo(heading, finalHeading);
