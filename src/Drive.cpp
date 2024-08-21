@@ -56,37 +56,29 @@ void Drive::turn(int direction) {
 
 // turns the robot from its current heading to a chosen heading
 void Drive::turnTo(Position *position, float finalHeading) {
-
     while ((*position).Heading != finalHeading) {
         if((*position).Heading - (finalHeading + 2*pi) < (*position).Heading - finalHeading) {
             turn(1); //dk if this is correct, may have to switch 1 for -1
         } else {
             turn(-1);
         }
+
+        wait(200, msec);
     }
 }
 
 // drives the robot in a straight line to point (X,Y)
 void Drive::driveTo(Position *position, int x, int y) {
-    // timer is the time at the end of the previous loop
-  auto timer = std::chrono::steady_clock::now();
-  std::chrono::milliseconds interval(20); // 20 milliseconds
+  float finalHeading = 0;
+  float distance = 0;
 
-  while (true) {
-    auto now = std::chrono::steady_clock::now();
-    auto timerDiff = now - timer;
-
-    if (timerDiff >= interval) {
-    // code in this loop runs every 10 ms
-      float finalHeading = atan(((*position).Y - y) / ((*position).X - x));
-      float distance = sqrt(pow((*position).Y - x, 2) + pow((*position).X - y, 2));
-      //float distance = sqrt(pow((X - x), 2)) + pow((Y - y), 2)));
-
+  while ((*position).Heading != finalHeading) {
+      finalHeading = atan(((*position).Y - y) / ((*position).X - x));
       Drive::turnTo(position, finalHeading);
-      driveDistance(distance);
-      
-      // set timer to the time at the end of the loop
-      timer = std::chrono::steady_clock::now();
-    }
   }  
+
+  while ((*position).Y != y || (*position).X != x) {
+      distance = sqrt(pow((*position).X + x, 2) + pow((*position).Y + y, 2));
+      driveDistance(distance);
+  }
 }

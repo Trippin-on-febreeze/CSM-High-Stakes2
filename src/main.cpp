@@ -34,6 +34,25 @@
 // ClawMotor            motor         8               
 // odometryL            rotation      9               
 // odometryR            rotation      10              
+// odometryB            rotation      11              
+// ---- END VEXCODE CONFIGURED DEVICES ----
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// LeftFrontDrive       motor         1               
+// RightFrontDrive      motor         2               
+// LeftCenterDrive      motor         3               
+// RightCenterDrive     motor         4               
+// LeftRearDrive        motor         5               
+// RightRearDrive       motor         6               
+// clawTiltPiston       digital_out   E               
+// clawPiston           digital_out   D               
+// mogoPiston           digital_out   C               
+// Controller1          controller                    
+// Intake               motor         7               
+// ClawMotor            motor         8               
+// odometryL            rotation      9               
+// odometryR            rotation      10              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
@@ -563,7 +582,8 @@ void autonomous(void) {
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(10); // 10 milliseconds
 
-    for (int i =0; i<300; i++) {
+    //for (int i =0; i<300; i++) idk why this was here
+    while(true) {
       auto now = std::chrono::steady_clock::now();
       auto timerDiff = now - timer;
 
@@ -587,7 +607,8 @@ void autonomous(void) {
       }
     
   //DRIVING LOGIC
-        Drive.driveTo(&position, 10, 10);
+        // Drive.driveTo(&position, -20, -20);
+        Drive.turnTo(&position, pi/2);
 }
 }
 
@@ -604,76 +625,79 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
 
-  autonomous();
+  int speed = 0, turn = 0, driveDirection = 1, leftDrive = 0, rightDrive = 0;
+  bool clawToggle1 = true, clawToggle2 = true, mogoToggle = true;
 
-  // int speed = 0, turn = 0, driveDirection = 1, leftDrive = 0, rightDrive = 0;
-  // bool clawToggle1 = true, clawToggle2 = true, mogoToggle = true;
+  clawPiston.set(true);
 
-  // clawPiston.set(true);
+  wait(5, seconds);
 
-  // wait(5, seconds);
+  clawPiston.set(false);
+  while(true) {
+    // Auton testing
+    if(Controller1.ButtonA.pressing() && Controller1.ButtonB.pressing()) {
+      autonomous();
+    }
 
-  // clawPiston.set(false);
-  // while (1) {
-  //   // Drivetrain control
-  //   speed = Controller1.Axis3.position();
-  //   turn = 0.8*Controller1.Axis1.position();
+    // Drivetrain control
+    speed = Controller1.Axis3.position();
+    turn = 0.8*Controller1.Axis1.position();
 
-  //   leftDrive = driveDirection*speed + turn;
-  //   rightDrive = driveDirection*speed - turn;
+    leftDrive = driveDirection*speed + turn;
+    rightDrive = driveDirection*speed - turn;
 
-  //   LeftFrontDrive.spin(forward, leftDrive, pct);
-  //   LeftCenterDrive.spin(forward, leftDrive, pct);
-  //   LeftRearDrive.spin(forward, leftDrive, pct);
+    LeftFrontDrive.spin(forward, leftDrive, pct);
+    LeftCenterDrive.spin(forward, leftDrive, pct);
+    LeftRearDrive.spin(forward, leftDrive, pct);
 
-  //   RightFrontDrive.spin(forward, rightDrive, pct);
-  //   RightCenterDrive.spin(forward, rightDrive, pct);
-  //   RightRearDrive.spin(forward, rightDrive, pct);
+    RightFrontDrive.spin(forward, rightDrive, pct);
+    RightCenterDrive.spin(forward, rightDrive, pct);
+    RightRearDrive.spin(forward, rightDrive, pct);
 
-  //   // Intake motor control
-  //   if(Controller1.ButtonR1.pressing()) {
-  //     Intake.spin(forward, 100, pct);
-  //   } else if (Controller1.ButtonR2.pressing()){
-  //     Intake.spin(reverse, 100, pct);
-  //   } else Intake.stop(); 
+    // Intake motor control
+    if(Controller1.ButtonR1.pressing()) {
+      Intake.spin(forward, 100, pct);
+    } else if (Controller1.ButtonR2.pressing()){
+      Intake.spin(reverse, 100, pct);
+    } else Intake.stop(); 
 
-  //   // Reverse drive direction
-  //   if(Controller1.ButtonUp.pressing()) {
-  //     driveDirection = 1;
-  //   } else if (Controller1.ButtonDown.pressing()){
-  //     driveDirection = -1;
-  //   }
+    // Reverse drive direction
+    if(Controller1.ButtonUp.pressing()) {
+      driveDirection = 1;
+    } else if (Controller1.ButtonDown.pressing()){
+      driveDirection = -1;
+    }
 
-  //   // Claw arm motor control
-  //   if(Controller1.ButtonL1.pressing()) {
-  //     ClawMotor.spin(forward, 50, pct);
-  //   } else if(Controller1.ButtonL2.pressing()) {
-  //     ClawMotor.spin(reverse, 50, pct);
-  //   } else ClawMotor.stop(hold); 
+    // Claw arm motor control
+    if(Controller1.ButtonL1.pressing()) {
+      ClawMotor.spin(forward, 50, pct);
+    } else if(Controller1.ButtonL2.pressing()) {
+      ClawMotor.spin(reverse, 50, pct);
+    } else ClawMotor.stop(hold); 
 
-  //   // Toggle for claw piston
-  //   if(Controller1.ButtonA.pressing()) {
-  //     clawPiston.set(clawToggle1);
-  //     clawToggle1 = !clawToggle1;
-  //     wait(2, sec);
-  //   }
+    // Toggle for claw piston
+    if(Controller1.ButtonA.pressing()) {
+      clawPiston.set(clawToggle1);
+      clawToggle1 = !clawToggle1;
+      wait(2, sec);
+    }
 
-  //   // Toggle for tilting claw piston
-  //   if(Controller1.ButtonX.pressing()) {
-  //     clawTiltPiston.set(clawToggle2);
-  //     clawToggle2 = !clawToggle2;
-  //     wait(2, sec);
-  //   }
+    // Toggle for tilting claw piston
+    if(Controller1.ButtonX.pressing()) {
+      clawTiltPiston.set(clawToggle2);
+      clawToggle2 = !clawToggle2;
+      wait(2, sec);
+    }
 
-  //   // Toggle for mogo piston
-  //   if(Controller1.ButtonY.pressing()) {
-  //     mogoPiston.set(mogoToggle);
-  //     mogoToggle = !mogoToggle;
-  //     wait(2, sec);
-  //   }
+    // Toggle for mogo piston
+    if(Controller1.ButtonY.pressing()) {
+      mogoPiston.set(mogoToggle);
+      mogoToggle = !mogoToggle;
+      wait(2, sec);
+    }
 
-  //   wait(20, msec); 
-  // }
+    wait(20, msec); 
+  }
 }
 
 //
