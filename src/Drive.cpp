@@ -45,26 +45,31 @@ void Drive::driveDistance(int distance) {
 
 // turns the robot, direction = 1 is right, direction != 1 is left
 void Drive::turn(int direction) {
-  if (direction == 1) {
+    if (direction == 1) {
         moveL(1);
         moveR(-1);
-    } else {
-        moveL(1);
-        moveR(-1);
-    }
+    } else if (direction == -1) {
+        moveL(-1);
+        moveR(1);
+    } else if (direction == 0) {
+        moveL(0);
+      moveR(0);
+  }
 }
 
 // turns the robot from its current heading to a chosen heading
 void Drive::turnTo(Position *position, float finalHeading) {
-    while ((*position).Heading != finalHeading) {
-        if((*position).Heading - (finalHeading + 2*pi) < (*position).Heading - finalHeading) {
+    while(round((*position).Heading) != round(finalHeading)) {
+        if(((*position).Heading - finalHeading) < pi) {
             turn(1); //dk if this is correct, may have to switch 1 for -1
-        } else {
+        } else if(((2*pi + finalHeading) - (*position).Heading) < pi){
             turn(-1);
-        }
+        } else turn(0);
 
-        wait(200, msec);
-    }
+        wait(2, sec);
+    } 
+
+    turn(0);
 }
 
 // drives the robot in a straight line to point (X,Y)
@@ -76,9 +81,10 @@ void Drive::driveTo(Position *position, int x, int y) {
       finalHeading = atan(((*position).Y - y) / ((*position).X - x));
       Drive::turnTo(position, finalHeading);
   }  
-
-  while ((*position).Y != y || (*position).X != x) {
-      distance = sqrt(pow((*position).X + x, 2) + pow((*position).Y + y, 2));
-      driveDistance(distance);
+  if((*position).Heading == finalHeading) { // makes sure it only starts driving once it faces the correct direction
+      while ((*position).Y != y || (*position).X != x) {
+          distance = sqrt(pow((*position).X + x, 2) + pow((*position).Y + y, 2));
+          driveDistance(distance);
+      }
   }
 }

@@ -1,517 +1,3 @@
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   E               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// odometryL            rotation      9               
-// odometryR            rotation      10              
-// odometryB            rotation      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   E               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// odometryL            rotation      9               
-// odometryR            rotation      10              
-// odometryB            rotation      11              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   E               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// odometryL            rotation      9               
-// odometryR            rotation      10              
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   E               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// odometryL            rotation      9               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   E               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   D               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// mogoPiston           digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// clawTiltPiston       digital_out   A               
-// clawPiston           digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// clawPiston           digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ClawMotor            motor         8               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// ReftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// Intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// ReftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// leftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// leftFrontDrive       motor         1               
-// rightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// leftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// intake               motor         7               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// Controller1          controller                    
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// DigitalOutD          digital_out   D               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// DigitalOutC          digital_out   C               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// Motor2               motor         2               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// LeftFrontDrive       motor         1               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// ---- END VEXCODE CONFIGURED DEVICES ----
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// DigitalOutC          digital_out   C               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-/*----------------------------------------------------------------------------*/
-/*                                                                            */
-/*    Module:       main.cpp                                                  */
-/*    Author:       VEX                                                       */
-/*    Created:      Thu Sep 26 2019                                           */
-/*    Description:  Competition Template                                      */
-/*                                                                            */
-/*----------------------------------------------------------------------------*/
-
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// LeftFrontDrive       motor         1               
-// RightFrontDrive      motor         2               
-// LeftCenterDrive      motor         3               
-// RightCenterDrive     motor         4               
-// LeftRearDrive        motor         5               
-// RightRearDrive       motor         6               
-// DigitalOutA          digital_out   A               
-// DigitalOutB          digital_out   B               
-// ---- END VEXCODE CONFIGURED DEVICES ----
-
 #include "vex.h"
 #include "head.h"
 
@@ -520,16 +6,7 @@ using namespace vex;
 // A global instance of competition
 competition Competition;
 
-
-
-
-
-
-
-
-
-
-
+const float pi = 3.1415926;
 
 // define your global instances of motors and other devices here
 
@@ -543,8 +20,6 @@ competition Competition;
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
-const float pi = 3.1415926;
-
 void pre_auton(void) {
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
@@ -554,7 +29,6 @@ void pre_auton(void) {
 }
 
 /*---------------------------------------------------------------------------*/
-/*                                                                           */
 /*                              Autonomous Task                              */
 /*                                                                           */
 /*  This task is used to control your robot during the autonomous phase of   */
@@ -580,7 +54,7 @@ void autonomous(void) {
 
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
-  std::chrono::milliseconds interval(10); // 10 milliseconds
+  std::chrono::milliseconds interval(20); // 20 milliseconds
 
     //for (int i =0; i<300; i++) idk why this was here
     while(true) {
@@ -588,11 +62,14 @@ void autonomous(void) {
       auto timerDiff = now - timer;
 
       if (timerDiff >= interval) {
-      // code in this loop runs every 10 ms
+      // code in this loop runs every 20 ms
+
+        // store rotation sensor positions
         float rotL = odometryL.position(degrees);
         float rotR = odometryR.position(degrees);
         float rotB = odometryB.position(degrees);
 
+        // resets rotation sensor positions
         odometryL.resetPosition();
         odometryR.resetPosition();
         odometryB.resetPosition();
@@ -605,15 +82,13 @@ void autonomous(void) {
         // set timer to the time at the end of the loop
         timer = std::chrono::steady_clock::now();
       }
-    
-  //DRIVING LOGIC
-        // Drive.driveTo(&position, -20, -20);
-        Drive.turnTo(&position, pi/2);
-}
+    } //DRIVING LOGIC
+  
+  // Drive.driveTo(&position, -20, -20);
+  Drive.turnTo(&position, pi/2);
 }
 
 /*---------------------------------------------------------------------------*/
-/*                                                                           */
 /*                              User Control Task                            */
 /*                                                                           */
 /*  This task is used to control your robot during the user control phase of */
@@ -679,21 +154,21 @@ void usercontrol(void) {
     if(Controller1.ButtonA.pressing()) {
       clawPiston.set(clawToggle1);
       clawToggle1 = !clawToggle1;
-      wait(2, sec);
+      wait(200, msec);
     }
 
     // Toggle for tilting claw piston
     if(Controller1.ButtonX.pressing()) {
       clawTiltPiston.set(clawToggle2);
       clawToggle2 = !clawToggle2;
-      wait(2, sec);
+      wait(200, msec);
     }
 
     // Toggle for mogo piston
     if(Controller1.ButtonY.pressing()) {
       mogoPiston.set(mogoToggle);
       mogoToggle = !mogoToggle;
-      wait(2, sec);
+      wait(200, msec);
     }
 
     wait(20, msec); 

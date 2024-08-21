@@ -23,7 +23,7 @@ float Odometry::yDisplacementCalc(float rotL, float rotR, float rotB) {
     float headingChange = (arclengthL - arclengthR) / (lToCentre + rToCentre);
 
     // Calculate y displacement
-    float yChange = 2 * sin(headingChange) * (arclengthR / headingChange + rToCentre);
+    float yChange = 2 * sin(headingChange/2) * (arclengthR/headingChange + rToCentre);
     
     return yChange;
 }
@@ -38,7 +38,7 @@ float Odometry::xDisplacementCalc(float rotL, float rotR, float rotB) {
     float headingChange = (arclengthL - arclengthR) / (lToCentre + rToCentre);
 
     // Calculate x displacement
-    float xChange = 2 * sin(headingChange) * (arclengthB / headingChange + bToCentre);
+    float xChange = 2 * sin(headingChange/2) * (arclengthB/headingChange + bToCentre);
     
     return xChange;
 }
