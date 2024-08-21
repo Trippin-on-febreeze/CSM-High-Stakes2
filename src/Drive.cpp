@@ -11,10 +11,14 @@ void Drive::moveL(int direction) {
         LeftFrontDrive.spin(forward, 100, pct);
         LeftCenterDrive.spin(forward, 100, pct);
         LeftRearDrive.spin(forward, 100, pct);
-    } else {
+    } else if (direction == -1) {
         LeftFrontDrive.spin(reverse, 100, pct);
         LeftCenterDrive.spin(reverse, 100, pct);
         LeftRearDrive.spin(reverse, 100, pct);
+    } else if (direction == 0) {
+        LeftFrontDrive.stop(brake);
+        LeftCenterDrive.stop(brake);
+        LeftRearDrive.stop(brake);
     }
 }
 
@@ -24,10 +28,14 @@ void Drive::moveR(int direction) {
         RightFrontDrive.spin(forward, 100, pct);
         RightCenterDrive.spin(forward, 100, pct);
         RightRearDrive.spin(forward, 100, pct);
-    } else {
+    } else if (direction == -1) {
         RightFrontDrive.spin(reverse, 100, pct);
         RightCenterDrive.spin(reverse, 100, pct);
         RightRearDrive.spin(reverse, 100, pct);
+    } else if (direction == 0) {
+        RightFrontDrive.stop(brake);
+        RightCenterDrive.stop(brake);
+        RightRearDrive.stop(brake);
     }
 }
 
@@ -43,7 +51,7 @@ void Drive::driveDistance(int distance) {
     RightRearDrive.spinTo(turnDegrees, degrees, false);
 }
 
-// turns the robot, direction = 1 is right, direction != 1 is left
+// turns the robot, direction = 1 is right, direction = -1 is left, direction = 0 is stop
 void Drive::turn(int direction) {
     if (direction == 1) {
         moveL(1);
@@ -53,7 +61,7 @@ void Drive::turn(int direction) {
         moveR(1);
     } else if (direction == 0) {
         moveL(0);
-      moveR(0);
+        moveR(0);
   }
 }
 
@@ -74,17 +82,17 @@ void Drive::turnTo(Position *position, float finalHeading) {
 
 // drives the robot in a straight line to point (X,Y)
 void Drive::driveTo(Position *position, int x, int y) {
-  float finalHeading = 0;
-  float distance = 0;
+    float finalHeading = 0;
+    float distance = 0;
 
-  while ((*position).Heading != finalHeading) {
-      finalHeading = atan(((*position).Y - y) / ((*position).X - x));
-      Drive::turnTo(position, finalHeading);
-  }  
-  if((*position).Heading == finalHeading) { // makes sure it only starts driving once it faces the correct direction
-      while ((*position).Y != y || (*position).X != x) {
-          distance = sqrt(pow((*position).X + x, 2) + pow((*position).Y + y, 2));
-          driveDistance(distance);
-      }
-  }
+    while ((*position).Heading != finalHeading) {
+        finalHeading = atan(((*position).Y - y) / ((*position).X - x));
+        Drive::turnTo(position, finalHeading);
+    }  
+    if((*position).Heading == finalHeading) { // makes sure it only starts driving once it faces the correct direction
+        while ((*position).Y != y || (*position).X != x) {
+            distance = sqrt(pow((*position).X + x, 2) + pow((*position).Y + y, 2));
+            driveDistance(distance);
+        }
+    }
 }

@@ -52,6 +52,8 @@ void autonomous(void) {
   position.Y = 0;
   position.Heading = 0;
 
+  int loopCount = 1;
+
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
   std::chrono::milliseconds interval(20); // 20 milliseconds
@@ -79,6 +81,24 @@ void autonomous(void) {
         position.X += Odometry.xDisplacementCalc(rotL, rotR, rotB);
         position.Y += Odometry.yDisplacementCalc(rotL, rotR, rotB);
 
+        loopCount += 1;
+
+        if(loopCount % 20 == 0) { // prints new values every 20th loop
+          Controller1.Screen.print(position.Heading * 180/pi);
+          Controller1.Screen.setCursor(1, 3);
+
+          Controller1.Screen.print(position.X);
+          Controller1.Screen.setCursor(1, 5);
+
+          Controller1.Screen.print(position.Y);
+          Controller1.Screen.setCursor(1, 7);
+
+          Controller1.Screen.newLine();
+
+          // if(Controller1.Screen.row() == 3 && Controller1.Screen.column() == 7) {
+          //   Controller1.Screen.clearScreen();
+          // }
+        }
         // set timer to the time at the end of the loop
         timer = std::chrono::steady_clock::now();
       }
