@@ -544,14 +544,6 @@ void pre_auton(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
-  float x = 0;
-  float y = 0;
-  float heading = 0;
-
-
-
-
-
 
 void autonomous(void) {
   // ..........................................................................
@@ -560,12 +552,12 @@ void autonomous(void) {
   
   // declaring instance of Odometry class
   Odometry Odometry;
-   Drive Drive;
-Position position;
+  Drive Drive;
+  Position position;
 
   position.X = 0;
   position.Y = 0;
-
+  position.Heading = 0;
 
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
@@ -585,20 +577,17 @@ Position position;
         odometryR.resetPosition();
         odometryB.resetPosition();
 
-
-        //DRIVING LOGIC
-        Drive.driveTo(&position, x, y, pi/2);
-
         // updating x, y, and heading
-        heading += Odometry.headingCalc(rotL, rotR, rotB); 
-        x += Odometry.xDisplacementCalc(rotL, rotR, rotB);
-        y += Odometry.yDisplacementCalc(rotL, rotR, rotB);
+        position.Heading += Odometry.headingCalc(rotL, rotR, rotB); 
+        position.X += Odometry.xDisplacementCalc(rotL, rotR, rotB);
+        position.Y += Odometry.yDisplacementCalc(rotL, rotR, rotB);
 
         // set timer to the time at the end of the loop
         timer = std::chrono::steady_clock::now();
-
-
       }
+    
+  //DRIVING LOGIC
+        Drive.driveTo(&position, 10, 10);
 }
 }
 

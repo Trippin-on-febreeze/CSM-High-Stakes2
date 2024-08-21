@@ -5,6 +5,7 @@
 struct Position {
     int Y;
     int X;
+    float Heading;
 };
 
 class Odometry {
@@ -14,9 +15,9 @@ public:
     float yDisplacementCalc(float rotL, float rotR, float rotB);
 
     const float pi = 3.14159265359;
-    const float lToCentre = 7.75;
-    const float rToCentre = 7.25;
-    const float bToCentre = 10.5;
+    const float lToCentre = 6.6875;
+    const float rToCentre = 6.0;
+    const float bToCentre = 10.75;
 };
 
 #endif // ODOMETRY_H
@@ -29,8 +30,8 @@ public:
     void moveR(int direction);
     void driveDistance(int distance);
     void turn(int direction);
-    void turnTo(float heading, float finalHeading);
-    void driveTo(Position *position, int x, int y, float heading);
+    void turnTo(Position *position, float finalHeading);
+    void driveTo(Position *position, int x, int y);
 };
 
 #endif // DRIVE_H
