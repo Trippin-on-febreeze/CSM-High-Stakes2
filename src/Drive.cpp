@@ -3,8 +3,6 @@
 #include <cmath>
 const float pi = 3.14159265359;
 
-
-
 // moves the left side of the drivetrain
 void Drive::moveL(int direction) {
     if (direction == 1) {
@@ -84,6 +82,21 @@ void Drive::turnTo(Position *position, float finalHeading) {
 void Drive::driveTo(Position *position, int x, int y) {
     float finalHeading = 0;
     float distance = 0;
+    
+    auto timer = std::chrono::steady_clock::now();
+    std::chrono::milliseconds interval(20);
+
+    while(true) {
+      auto now = std::chrono::steady_clock::now();
+      auto timerDiff = now - timer;
+
+      if (timerDiff >= interval) {
+      // code in this loop runs every 20 ms
+        
+        // set timer to the time at the end of the loop
+        timer = std::chrono::steady_clock::now();
+      }
+    }
 
     while ((*position).Heading != finalHeading) {
         finalHeading = atan(((*position).Y - y) / ((*position).X - x));

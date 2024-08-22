@@ -56,7 +56,7 @@ void autonomous(void) {
 
   // timer is the time at the end of the previous loop
   auto timer = std::chrono::steady_clock::now();
-  std::chrono::milliseconds interval(20); // 20 milliseconds
+  std::chrono::milliseconds interval(40); // 20 milliseconds
 
     //for (int i =0; i<300; i++) idk why this was here
     while(true) {
@@ -83,28 +83,27 @@ void autonomous(void) {
 
         loopCount += 1;
 
-        if(loopCount % 20 == 0) { // prints new values every 20th loop
+        if(loopCount % 5 == 0) { // prints new values every 20th loop
+          Controller1.Screen.print("dir:");
           Controller1.Screen.print(position.Heading * 180/pi);
-          Controller1.Screen.setCursor(1, 3);
 
+          Controller1.Screen.setCursor(Controller1.Screen.row(), Controller1.Screen.column() + 2);
+          Controller1.Screen.print("x:");
           Controller1.Screen.print(position.X);
-          Controller1.Screen.setCursor(1, 5);
 
+          Controller1.Screen.setCursor(Controller1.Screen.row(), Controller1.Screen.column() + 2);
+          Controller1.Screen.print("y:");
           Controller1.Screen.print(position.Y);
-          Controller1.Screen.setCursor(1, 7);
 
-          Controller1.Screen.newLine();
+          Controller1.Screen.clearScreen();
+          Controller1.Screen.setCursor(1, 1);
 
-          // if(Controller1.Screen.row() == 3 && Controller1.Screen.column() == 7) {
-          //   Controller1.Screen.clearScreen();
-          // }
         }
         // set timer to the time at the end of the loop
         timer = std::chrono::steady_clock::now();
       }
     } //DRIVING LOGIC
   
-  // Drive.driveTo(&position, -20, -20);
   Drive.turnTo(&position, pi/2);
 }
 
